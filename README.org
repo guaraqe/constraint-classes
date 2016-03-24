@@ -1,4 +1,13 @@
 #+TITLE: constraint-classes
 
-This package implements ~Functor~ and ~Foldable~ classes using
-~ConstraintKinds~ under the names of ~CFunctor~ and ~CFoldable~.
+This package implements some classes using ~ConstraintKinds~ in a way
+that is supposed to not clash with the standard ones. The rule is that
+class ~Something~ becomes ~CSomething~.
+
+Currently the implemented classes are:
+- ~Functor~
+- ~Foldable~
+
+I use them mainly for ~Storable~, so that ~Applicative~ and ~Monad~ in
+their standard forms are not implementable, which explain their
+absence here, but PR are welcome.
