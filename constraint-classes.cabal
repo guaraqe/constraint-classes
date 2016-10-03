@@ -1,5 +1,5 @@
 name:                constraint-classes
-version:             0.2.0
+version:             0.3.0
 synopsis:            Prelude classes using ConstraintKinds
 description:         Please see README.org
 homepage:            http://github.com/guaraqe/constraint-classes#readme

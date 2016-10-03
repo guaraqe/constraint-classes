@@ -13,7 +13,7 @@ class CFunctor f where
   type CFun f a :: Constraint
   type CFun f a = ()
 
-  cmap :: (CFun f a, CFun f b) => (a -> b) -> f a -> f b
+  _fmap :: (CFun f a, CFun f b) => (a -> b) -> f a -> f b
 
 ----------------------------------------------------------------------
 
@@ -22,30 +22,30 @@ class CFoldable f where
   type CFol f a :: Constraint
   type CFol f a = ()
 
-  cfoldr  :: (CFol f a) => (a -> b -> b) -> b -> f a -> b
-  cfoldr' :: (CFol f a) => (a -> b -> b) -> b -> f a -> b
-  cfoldl  :: (CFol f b) => (a -> b -> a) -> a -> f b -> a
-  cfoldl' :: (CFol f b) => (a -> b -> a) -> a -> f b -> a
+  _foldr  :: (CFol f a) => (a -> b -> b) -> b -> f a -> b
+  _foldr' :: (CFol f a) => (a -> b -> b) -> b -> f a -> b
+  _foldl  :: (CFol f b) => (a -> b -> a) -> a -> f b -> a
+  _foldl' :: (CFol f b) => (a -> b -> a) -> a -> f b -> a
 
-  cfold :: (CFol f m, Monoid m) => f m -> m
-  cfold = cfoldMap id
+  _fold :: (CFol f m, Monoid m) => f m -> m
+  _fold = _foldMap id
 
-  cfoldMap :: (CFol f a, CFol f m, Monoid m) => (a -> m) -> f a -> m
-  cfoldMap f = cfoldr (mappend . f) mempty
+  _foldMap :: (CFol f a, CFol f m, Monoid m) => (a -> m) -> f a -> m
+  _foldMap f = _foldr (mappend . f) mempty
 
-  clength :: CFol f a => f a -> Int
-  clength = cfoldl (\c _ -> c+1) 0
+  _length :: CFol f a => f a -> Int
+  _length = _foldl (\c _ -> c+1) 0
 
-  cmapM :: (Monad m, CFol f a, CFol f b)
+  _mapM :: (Monad m, CFol f a, CFol f b)
         => (a -> m b) -> f a -> m (f b)
 
-  cforM :: (Monad m, CFol f a, CFol f b)
+  _forM :: (Monad m, CFol f a, CFol f b)
         => f a -> (a -> m b) -> m (f b)
-  cforM = flip cmapM
+  _forM = flip _mapM
 
-  cmapM_ :: (Monad m, CFol f a)
+  _mapM_ :: (Monad m, CFol f a)
          => (a -> m b) -> f a -> m ()
 
-  cforM_ :: (Monad m, CFol f a)
+  _forM_ :: (Monad m, CFol f a)
          => f a -> (a -> m b) -> m ()
-  cforM_ = flip cmapM_
+  _forM_ = flip _mapM_

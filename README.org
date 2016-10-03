@@ -2,7 +2,8 @@
 
 This package implements some classes using ~ConstraintKinds~ in a way
 that is supposed to not clash with the standard ones. The rule is that
-class ~Something~ becomes ~CSomething~.
+class ~Something~ becomes ~CSomething~ and the function ~function~
+becomes ~_function~.
 
 Currently the implemented classes are:
 - ~Functor~
@@ -10,4 +11,4 @@ Currently the implemented classes are:
 
 I use them mainly for ~Storable~, so that ~Applicative~ and ~Monad~ in
 their standard forms are not implementable, which explain their
-absence here, but PR are welcome.
+absence here, but PRs are welcome.
