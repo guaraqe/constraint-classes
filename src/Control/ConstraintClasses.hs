@@ -73,18 +73,22 @@ class CFoldable f where
   _length :: Con f a => f a -> Int
   _length = _foldl (\c _ -> c+1) 0
 
-  _mapM :: (Monad m, Con f a, Con f b)
-        => (a -> m b) -> f a -> m (f b)
+  _mapM ::
+    (Monad m, Con f a, Con f b) =>
+    (a -> m b) -> f a -> m (f b)
 
-  _forM :: (Monad m, Con f a, Con f b)
-        => f a -> (a -> m b) -> m (f b)
+  _forM ::
+    (Monad m, Con f a, Con f b) =>
+    f a -> (a -> m b) -> m (f b)
   _forM = flip _mapM
 
-  _mapM_ :: (Monad m, Con f a)
-         => (a -> m b) -> f a -> m ()
+  _mapM_ ::
+    (Monad m, Con f a) =>
+    (a -> m b) -> f a -> m ()
 
-  _forM_ :: (Monad m, Con f a)
-         => f a -> (a -> m b) -> m ()
+  _forM_ ::
+    (Monad m, Con f a) =>
+    f a -> (a -> m b) -> m ()
   _forM_ = flip _mapM_
 
 ----------------------------------------------------------------------
