@@ -135,5 +135,5 @@ class (CFoldable f, CIndexed f i) => CIndexFoldable f i | f -> i where
 
   _ifoldr :: Con f a => (i -> a -> b -> b) -> b -> f a -> b
   _ifoldr' :: Con f a => (i -> a -> b -> b) -> b -> f a -> b
-  _ifoldl :: Con f a => (a -> i -> b -> a) -> a -> f b -> a
-  _ifoldl' :: Con f a => (a -> i -> b -> a) -> a -> f b -> a
+  _ifoldl :: Con f b => (a -> i -> b -> a) -> a -> f b -> a
+  _ifoldl' :: Con f b => (a -> i -> b -> a) -> a -> f b -> a

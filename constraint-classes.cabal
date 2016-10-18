@@ -1,7 +1,7 @@
 name:
   constraint-classes
 version:
-  0.6.0
+  0.6.1
 synopsis:
   Prelude classes using ConstraintKinds
 description:
