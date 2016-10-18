@@ -2,8 +2,8 @@
 
 This package implements some type classes using `ConstraintKinds` in a way
 that is supposed to not clash with the `Prelude` ones. The general rule is that
-class ~Something~ becomes ~CSomething~ and the function ~function~
-becomes ~_function~.
+class `Class` becomes `CClass` and the function `function`
+becomes `_function`.
 
 Currently the implemented classes are:
 - `CFunctor`
