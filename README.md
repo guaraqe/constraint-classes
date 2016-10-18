@@ -12,7 +12,6 @@ Currently the implemented classes are:
 - `CFoldable`
 - `CTraversable`
 - `CZippable`
-- `CTraversable`
 - `CIndexed`
 
 I use them mainly for `Data.Vector.Storable`, so that `Applicative` and
