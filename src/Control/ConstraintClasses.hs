@@ -9,10 +9,13 @@ module Control.ConstraintClasses
   , CFunctor (..)
   , CApplicative (..)
   , CMonad (..)
+  , CAlternative (..)
   , CFoldable (..)
   , CTraversable (..)
   , CZippable (..)
   , CIndexed (..)
+  , CIndexFunctor (..)
+  , CIndexFoldable (..)
   ) where
 
 import GHC.Exts (Constraint)
@@ -55,6 +58,14 @@ class CApplicative f => CMonad f where
 
 ----------------------------------------------------------------------
 
+class CApplicative f => CAlternative f where
+
+  _empty :: Con f a => f a
+
+  _concat :: Con f a => f a -> f a -> f a
+
+----------------------------------------------------------------------
+
 class CFoldable f where
   {-# MINIMAL _foldMap | _foldr #-}
 
@@ -72,15 +83,6 @@ class CFoldable f where
 
   _length :: Con f a => f a -> Int
   _length = _foldl (\c _ -> c+1) 0
-
-  _mapM ::
-    (Monad m, Con f a, Con f b) =>
-    (a -> m b) -> f a -> m (f b)
-
-  _forM ::
-    (Monad m, Con f a, Con f b) =>
-    f a -> (a -> m b) -> m (f b)
-  _forM = flip _mapM
 
   _mapM_ ::
     (Monad m, Con f a) =>
@@ -120,3 +122,18 @@ class CFunctor f => CZippable f where
 class CFunctor f => CIndexed f i | f -> i where
 
   (!) :: (Con f a) => f a -> i -> a
+
+----------------------------------------------------------------------
+
+class (CFunctor f, CIndexed f i) => CIndexFunctor f i | f -> i where
+
+   _imap :: (Con f a, Con f b) => (i -> a -> b) -> f a -> f b
+
+----------------------------------------------------------------------
+
+class (CFoldable f, CIndexed f i) => CIndexFoldable f i | f -> i where
+
+  _ifoldr :: Con f a => (i -> a -> b -> b) -> b -> f a -> b
+  _ifoldr' :: Con f a => (i -> a -> b -> b) -> b -> f a -> b
+  _ifoldl :: Con f a => (a -> i -> b -> a) -> a -> f b -> a
+  _ifoldl' :: Con f a => (a -> i -> b -> a) -> a -> f b -> a

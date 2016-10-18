@@ -11,11 +11,14 @@ Currently the implemented classes are:
 - `CFunctor`
 - `CApplicative`
 - `CMonad`
+- `CAlternative`
 - `CFoldable`
 - `CTraversable`
 - `CZippable`
 - `CIndexed`
+- `CIndexFunctor`
+- `CIndexFoldable`
 
 I use them mainly for `Data.Vector.Storable`, so that `Applicative` and `Monad`
-in their standard forms are not implementable, which explain their alternative
+in their standard forms are not implementable, which explains their alternative
 forms here, look at the code for more info.
