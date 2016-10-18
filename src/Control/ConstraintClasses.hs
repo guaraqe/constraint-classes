@@ -2,9 +2,11 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE KindSignatures #-}
 
 module Control.ConstraintClasses
-  ( CFunctor (..)
+  ( Con (..)
+  , CFunctor (..)
   , CApplicative (..)
   , CMonad (..)
   , CFoldable (..)
@@ -17,9 +19,11 @@ import GHC.Exts (Constraint)
 
 ----------------------------------------------------------------------
 
+type family Con (f :: * -> *) a :: Constraint
+
+----------------------------------------------------------------------
+
 class CFunctor f where
-  type Con f a :: Constraint
-  type Con f a = ()
 
   _fmap :: (Con f a, Con f b) => (a -> b) -> f a -> f b
 
