@@ -1,9 +1,9 @@
 name:
   constraint-classes
 version:
-  0.6.1
+  0.5
 synopsis:
-  Prelude classes using ConstraintKinds
+  Various typeclasses using ConstraintKinds
 description:
   Please see README.md
 homepage:
