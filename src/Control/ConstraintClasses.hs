@@ -208,10 +208,10 @@ class CFoldable f => CFoldableWithKey f where
 
   _itoList :: Con f a => f a -> [(CKey f, a)]
   _ifoldMap :: (Monoid m, Con f a) => (CKey f -> a -> m) -> f a -> m
-  _ifoldr :: Con f a => (i -> a -> b -> b) -> b -> f a -> b
-  _ifoldr' :: Con f a => (i -> a -> b -> b) -> b -> f a -> b
-  _ifoldl :: Con f b => (a -> i -> b -> a) -> a -> f b -> a
-  _ifoldl' :: Con f b => (a -> i -> b -> a) -> a -> f b -> a
+  _ifoldr :: Con f a => (CKey f -> a -> b -> b) -> b -> f a -> b
+  _ifoldr' :: Con f a => (CKey f -> a -> b -> b) -> b -> f a -> b
+  _ifoldl :: Con f b => (a -> CKey f -> b -> a) -> a -> f b -> a
+  _ifoldl' :: Con f b => (a -> CKey f -> b -> a) -> a -> f b -> a
 
 --------------------------------------------------------------------------------
 
@@ -228,7 +228,7 @@ class (CKeyed t, CFoldableWithKey t, CTraversable t) =>
 
   _itraverse ::
     (Con t a, Con t b, Monad f) =>
-    (CKey f -> a -> f b) -> t a -> f (t b)
+    (CKey t -> a -> f b) -> t a -> f (t b)
 
 --------------------------------------------------------------------------------
 
