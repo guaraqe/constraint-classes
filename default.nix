@@ -1,10 +1,10 @@
-{ mkDerivation, base, stdenv }:
+{ mkDerivation, base, constraints, ghc-prim, stdenv }:
 mkDerivation {
   pname = "constraint-classes";
-  version = "0.3.0";
+  version = "0.5";
   src = ./.;
-  libraryHaskellDepends = [ base ];
+  libraryHaskellDepends = [ base constraints ghc-prim ];
   homepage = "http://github.com/guaraqe/constraint-classes#readme";
-  description = "Prelude classes using ConstraintKinds";
+  description = "Various typeclasses using ConstraintKinds";
   license = stdenv.lib.licenses.bsd3;
 }
