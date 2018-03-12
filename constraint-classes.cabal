@@ -1,7 +1,7 @@
 name:
   constraint-classes
 version:
-  0.5
+  0.6.0
 synopsis:
   Various typeclasses using ConstraintKinds
 description:
@@ -28,12 +28,72 @@ library
     src
   exposed-modules:
     Control.ConstraintClasses
+
+    Control.ConstraintClasses.Domain
+
+    Control.ConstraintClasses.Functor
+    Control.ConstraintClasses.Apply
+    Control.ConstraintClasses.Ap
+    Control.ConstraintClasses.Applicative
+    Control.ConstraintClasses.Bind
+    Control.ConstraintClasses.Monad
+
+    Control.ConstraintClasses.Alt
+    Control.ConstraintClasses.Plus
+    Control.ConstraintClasses.Alternative
+    Control.ConstraintClasses.MonadZero
+    Control.ConstraintClasses.MonadPlus
+
+    Control.ConstraintClasses.Zip
+    Control.ConstraintClasses.Zap
+
+    Control.ConstraintClasses.Unzip
+
+    Control.ConstraintClasses.Foldable
+    Control.ConstraintClasses.FoldableFunctor
+    Control.ConstraintClasses.Traversable
+    Control.ConstraintClasses.Traversable2
+
+    Control.ConstraintClasses.Witherable
+    Control.ConstraintClasses.Witherable2
+
+    Control.ConstraintClasses.Distributive
+    Control.ConstraintClasses.Distributive2
+
+    Control.ConstraintClasses.Key
+
+    Control.ConstraintClasses.Lookup
+    Control.ConstraintClasses.Indexable
+    Control.ConstraintClasses.Adjustable
+
+    Control.ConstraintClasses.KeyFunctor
+
+    Control.ConstraintClasses.KeyFoldable
+    Control.ConstraintClasses.KeyFoldableFunctor
+    Control.ConstraintClasses.KeyTraversable
+
+    Control.ConstraintClasses.KeyZip
+
+    Control.ConstraintClasses.Eq1
+
   build-depends:
-    base >= 4.7 && < 5,
+    -- domain
     constraints,
-    transformers
+    storable-tuple,
+    -- classes
+    distributive,
+    keys,
+    witherable,
+    -- types
+    base >= 4.7 && < 5,
+    containers,
+    linear,
+    transformers,
+    vector
   default-language:
     Haskell2010
+  ghc-options:
+    -Wall -O2
 
 source-repository head
   type:

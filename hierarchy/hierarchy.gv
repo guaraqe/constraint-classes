@@ -1,0 +1,105 @@
+digraph G {
+
+  graph[rankdir=LR];
+
+  CFunctor;
+
+  CFunctor -> CApply;
+
+  CFunctor -> CAlt;
+
+  CFunctor -> CExtend;
+
+  CApply -> CApplicative;
+
+  CApply -> CBind;
+
+  CApply -> CAp;
+
+  CAlt -> CPlus;
+
+  CExtend -> CComonad;
+
+  CBind -> CMonad;
+
+  CApplicative -> CMonad;
+
+  CApplicative -> CAlternative;
+
+  CPlus -> CAlternative;
+
+  CMonad -> CMonadZero;
+
+  CAlternative -> CMonadZero;
+
+  CMonadZero -> CMonadPlus;
+
+  CFunctor -> CZip;
+
+  CZip -> CZap;
+
+  CFunctor -> CAlign;
+
+  CFunctor -> CUnzip;
+
+  // Foldable
+
+  CFoldable;
+
+  CFunctor -> CFoldableFunctor;
+  CFoldable -> CFoldableFunctor;
+
+  CFoldableFunctor -> CTraversable;
+
+  CTraversable -> CCTraversable;
+
+  // Key
+
+  CFunctor -> CLookup;
+
+  CLookup -> CIndexable;
+
+  CFunctor -> CKeyFunctor;
+
+  CKeyFunctor -> CKeyZip;
+
+  CZip -> CKeyZip;
+
+  CKeyFunctor -> CKeyUnzip;
+
+  CUnzip -> CKeyUnzip;
+
+  CFoldable -> CKeyFoldable;
+
+
+  CKeyFunctor -> CKeyFoldableFunctor;
+
+  CKeyFoldable -> CKeyFoldableFunctor;
+
+  CKeyFoldableFunctor -> CKeyTraversable;
+
+  CFoldableFunctor -> CKeyFoldableFunctor;
+
+  CTraversable -> CKeyTraversable;
+
+  CKeyFunctor -> CAdjustable;
+
+  // Witherable
+
+  CTraversable -> CWitherable;
+
+  CWitherable -> CCWitherable;
+
+  // Distributive
+
+  CFunctor -> CDistributive;
+
+  CDistributive -> CCDistributive;
+
+  // Representable
+
+  CDistributive -> CRepresentable;
+
+  CIndexable -> CRepresentable;
+
+}
