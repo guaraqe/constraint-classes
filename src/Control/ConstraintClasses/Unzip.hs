@@ -27,8 +27,9 @@ import qualified Data.Vector.Unboxed as VectorUnboxed
 
 class (DomCartesian f, CFunctor f) => CUnzip f where
   _unzip ::
-    (Dom f a, Dom f b) =>
+    (Dom f a, Dom f b, Dom f (a,b)) =>
     f (a, b) -> (f a, f b)
+  _unzip = _unzipWith id
 
   _unzipWith ::
     (Dom f a, Dom f b, Dom f c) =>

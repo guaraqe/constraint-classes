@@ -9,6 +9,7 @@ mkDerivation {
     base constraints containers distributive keys linear storable-tuple
     transformers vector witherable
   ];
+  homepage = "http://github.com/guaraqe/constraint-classes#readme";
   description = "Various typeclasses using ConstraintKinds";
   license = stdenv.lib.licenses.bsd3;
 }

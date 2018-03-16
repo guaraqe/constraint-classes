@@ -15,9 +15,9 @@ license-file:
 author:
   guaraqe
 maintainer:
-  guaraqe@openmailbox.org
+  mail@guaraqe.gq
 copyright:
-  2016 guaraqe
+  2016-2018 guaraqe
 build-type:
   Simple
 cabal-version:
